@@ -1,0 +1,29 @@
+.backgroundBlue {
+  background-color: darkblue;
+  padding: 20px;
+}
+
+.backgroundWhite {
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.backgroundWhite > img {
+  width: 100%;
+}
+
+.userContainer {
+  display: flex;
+}
+
+.userContainer img {
+  display: block;
+  border-radius: 1000px;
+}
+
+.userNameContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
