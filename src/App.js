@@ -23,6 +23,8 @@ function Tweet({ tweet }) {
     setTimeout(convertToImage, 500);
   }, [tweet]);
 
+  const hasMedia = tweet.entities && tweet.entities.media;
+
   return (
     <>
       <h2>Vorschau: </h2>
@@ -32,17 +34,23 @@ function Tweet({ tweet }) {
           <div className={tweetStyles.userContainer}>
             <img src={tweet.user.profile_image_url_https} />
             <div className={tweetStyles.userNameContainer}>
-              <span>{tweet.user.name}</span>
-              <span>@{tweet.user.screen_name}</span>
+              <span className={tweetStyles.userName}>{tweet.user.name}</span>
+              <span className={tweetStyles.userScreenName}>
+                @{tweet.user.screen_name}
+              </span>
             </div>
           </div>
-          <p>{tweet.full_text}</p>
-          <span>
+          <p className={tweetStyles.text}>{tweet.full_text}</p>
+          <span className={tweetStyles.timestamp}>
             {moment(tweet.created_at).format("LT")} Uhr{" "}
             {moment(tweet.created_at).format("LL")}
           </span>
-          <img src={tweet.entities.media[0].media_url_https} />
         </div>
+        {hasMedia && (
+          <div className={tweetStyles.imageContainer}>
+            <img src={tweet.entities.media[0].media_url_https} />{" "}
+          </div>
+        )}
       </div>
       {image && <img src={image} />}
       <button>Download</button>

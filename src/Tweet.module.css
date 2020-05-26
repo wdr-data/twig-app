@@ -1,16 +1,25 @@
 .backgroundBlue {
-  background-color: darkblue;
+  background: transparent
+    linear-gradient(60deg, #0e1f35 0%, #082a4a 50%, #003f76 100%) 0% 0%
+    no-repeat padding-box;
   padding: 20px;
   width: 1080px;
 }
 
 .backgroundWhite {
-  background-color: white;
-  padding: 20px;
+  background: white;
   border-radius: 20px;
+  padding: 20px;
 }
 
-.backgroundWhite > img {
+.imageContainer {
+  width: 100%;
+  margin-top: -20px;
+  overflow: hidden;
+}
+
+.imageContainer > img {
+  border-radius: 0 0 20px 20px;
   width: 100%;
 }
 
@@ -27,4 +36,32 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 10px;
+}
+
+.userName {
+  font-family: "WDRSansVZ";
+  font-weight: bold;
+  color: #002f52;
+  font-size: 22px;
+}
+
+.userScreenName {
+  font-family: "WDRSansVZ";
+  font-weight: medium;
+  color: #008b9e;
+  font-size: 18px;
+}
+
+.text {
+  font-family: "WDRSlabVZ";
+  font-weight: medium;
+  color: #002f52;
+  font-size: 48px;
+}
+
+.timestamp {
+  font-family: "WDRSansVZ";
+  font-weight: medium;
+  color: #008b9e;
 }
