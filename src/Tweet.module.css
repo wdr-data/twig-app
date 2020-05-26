@@ -27,16 +27,25 @@
   display: flex;
 }
 
-.userContainer img {
+.userContainer > img {
   display: block;
+  height: 48px;
+  width: 48px;
+}
+
+.userPhoto {
   border-radius: 1000px;
 }
 
 .userNameContainer {
+  flex-grow: 1;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-left: 10px;
+  padding-top: 4px;
+  line-height: 1;
 }
 
 .userName {
@@ -48,14 +57,16 @@
 
 .userScreenName {
   font-family: "WDRSansVZ";
-  font-weight: medium;
+  font-weight: 500;
   color: #008b9e;
   font-size: 18px;
 }
 
 .text {
+  margin-top: 20px;
+  margin-bottom: 20px;
   font-family: "WDRSlabVZ";
-  font-weight: medium;
+  font-weight: 500;
   color: #002f52;
   font-size: 48px;
   overflow-wrap: break-word;
@@ -66,7 +77,14 @@
 }
 
 .timestamp {
+  display: block;
   font-family: "WDRSansVZ";
-  font-weight: medium;
+  font-weight: 500;
+  font-size: 18px;
   color: #008b9e;
+}
+
+.timestampBelow {
+  padding-top: 10px;
+  padding-left: 20px;
 }

@@ -2,7 +2,9 @@ import React, { useCallback, useState, useRef, useEffect } from "react";
 import moment from "moment";
 import "moment/locale/de";
 import htmlToImage from "html-to-image";
+import classNames from "classnames";
 
+import twitterLogo from "./images/Twitter_Logo_Blue.svg";
 import appStyles from "./App.module.css";
 import tweetStyles from "./Tweet.module.css";
 
@@ -80,6 +82,18 @@ function Tweet({ tweet }) {
 
   const hasMedia = tweet.entities && tweet.entities.media;
 
+  const timestamp = (
+    <span
+      className={classNames(
+        tweetStyles.timestamp,
+        hasMedia && tweetStyles.timestampBelow
+      )}
+    >
+      {moment(tweet.created_at).format("LT")} Uhr •{" "}
+      {moment(tweet.created_at).format("LL")}
+    </span>
+  );
+
   return (
     <>
       <h2>Vorschau: </h2>
@@ -87,25 +101,27 @@ function Tweet({ tweet }) {
       <div ref={tweetRef} className={tweetStyles.backgroundBlue}>
         <div className={tweetStyles.backgroundWhite}>
           <div className={tweetStyles.userContainer}>
-            <img src={tweet.user.profile_image_url_https} />
+            <img
+              className={tweetStyles.userPhoto}
+              src={tweet.user.profile_image_url_https}
+            />
             <div className={tweetStyles.userNameContainer}>
               <span className={tweetStyles.userName}>{tweet.user.name}</span>
               <span className={tweetStyles.userScreenName}>
                 @{tweet.user.screen_name}
               </span>
             </div>
+            <img className={tweetStyles.twitterLogo} src={twitterLogo} />
           </div>
           <p className={tweetStyles.text}>{tokenizeTweet(tweet)}</p>
-          <span className={tweetStyles.timestamp}>
-            {moment(tweet.created_at).format("LT")} Uhr{" "}
-            {moment(tweet.created_at).format("LL")}
-          </span>
+          {!hasMedia && timestamp}
         </div>
         {hasMedia && (
           <div className={tweetStyles.imageContainer}>
             <img src={tweet.entities.media[0].media_url_https} />{" "}
           </div>
         )}
+        {hasMedia && timestamp}
       </div>
       {image && <img src={image} />}
       <button>Download</button>
