@@ -2,8 +2,9 @@
   background: transparent
     linear-gradient(60deg, #0e1f35 0%, #082a4a 50%, #003f76 100%) 0% 0%
     no-repeat padding-box;
-  padding: 20px;
+  padding: 40px;
   width: 1080px;
+  box-sizing: border-box;
 }
 
 .backgroundWhite {
