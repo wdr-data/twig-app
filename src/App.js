@@ -1,6 +1,7 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useRef, useEffect } from "react";
 import moment from "moment";
 import "moment/locale/de";
+import htmlToImage from "html-to-image";
 
 import appStyles from "./App.module.css";
 import tweetStyles from "./Tweet.module.css";
@@ -11,11 +12,22 @@ const baseUrl =
   "https://zvbwmhjkp7.execute-api.eu-central-1.amazonaws.com/staging/status/";
 
 function Tweet({ tweet }) {
+  const tweetRef = useRef();
+  const [image, setImage] = useState();
+
+  useEffect(() => {
+    const convertToImage = async () => {
+      const dataUrl = await htmlToImage.toPng(tweetRef.current);
+      setImage(dataUrl);
+    };
+    setTimeout(convertToImage, 500);
+  }, [tweet]);
+
   return (
     <>
       <h2>Vorschau: </h2>
 
-      <div className={tweetStyles.backgroundBlue}>
+      <div ref={tweetRef} className={tweetStyles.backgroundBlue}>
         <div className={tweetStyles.backgroundWhite}>
           <div className={tweetStyles.userContainer}>
             <img src={tweet.user.profile_image_url_https} />
@@ -32,6 +44,7 @@ function Tweet({ tweet }) {
           <img src={tweet.entities.media[0].media_url_https} />
         </div>
       </div>
+      {image && <img src={image} />}
       <button>Download</button>
     </>
   );
