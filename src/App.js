@@ -20,7 +20,7 @@ function Tweet({ tweet }) {
       const dataUrl = await htmlToImage.toPng(tweetRef.current);
       setImage(dataUrl);
     };
-    setTimeout(convertToImage, 500);
+    setTimeout(convertToImage, 1500);
   }, [tweet]);
 
   const hasMedia = tweet.entities && tweet.entities.media;
