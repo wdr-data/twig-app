@@ -58,6 +58,11 @@
   font-weight: medium;
   color: #002f52;
   font-size: 48px;
+  overflow-wrap: break-word;
+}
+
+.highlightText {
+  color: #008b9e;
 }
 
 .timestamp {
