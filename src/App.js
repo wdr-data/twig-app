@@ -89,10 +89,13 @@ function Tweet({ tweet }) {
   const tweetRef = useRef();
 
   const downloadImage = useCallback(async () => {
+    const originalPixelRatio = window.devicePixelRatio;
+    window.devicePixelRatio = 1;
     const dataUrl = await htmlToImage.toPng(tweetRef.current, {
       width: tweetRef.current.clientWidth,
       height: tweetRef.current.clientHeight,
     });
+    window.devicePixelRatio = originalPixelRatio;
     download(
       dataUrl,
       `${tweet.user.screen_name}_${moment()
