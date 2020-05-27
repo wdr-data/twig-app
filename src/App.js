@@ -44,20 +44,20 @@ const tokenizeTweet = (tweet) => {
 
     // Check if there is regular text between the last entity and this one
     if (currentIndex !== startIndex) {
-      nodes.push(<span>{getSlice(currentIndex, startIndex)}</span>);
+      nodes.push(<span key={nodes.length}>{getSlice(currentIndex, startIndex)}</span>);
     }
 
     if (entity.kind === "url") {
       nodes.push(
-        <span className={tweetStyles.highlightText}>{entity.display_url}</span>
+        <span key={nodes.length} className={tweetStyles.highlightText}>{entity.display_url}</span>
       );
     } else if (entity.kind === "break") {
-      nodes.push(<br />);
+      nodes.push(<br key={nodes.length} />);
     } else if (["media", "end"].includes(entity.kind)) {
       // Don't display media links
     } else {
       nodes.push(
-        <span className={tweetStyles.highlightText}>
+        <span key={nodes.length} className={tweetStyles.highlightText}>
           {getSlice(startIndex, endIndex)}
         </span>
       );
