@@ -26,7 +26,7 @@
   background: transparent linear-gradient(#707070ff 0%, #70707000 100%) 0% 0%
     no-repeat padding-box;
   position: absolute;
-  right: 0;
+  right: -1px;
   top: 0;
   bottom: 0;
   width: 1px;
