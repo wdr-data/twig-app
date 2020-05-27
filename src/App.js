@@ -122,6 +122,9 @@ function Tweet({ tweet }) {
         Download
       </Button>
       <div ref={tweetRef} className={tweetStyles.backgroundBlue}>
+        <div className={tweetStyles.overlay}>
+          <div className={tweetStyles.overlayBorder} />
+        </div>
         <div className={tweetStyles.backgroundWhite}>
           <div className={tweetStyles.userContainer}>
             <img

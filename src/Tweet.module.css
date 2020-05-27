@@ -1,10 +1,35 @@
 .backgroundBlue {
+  position: relative;
   background: transparent
     linear-gradient(60deg, #0e1f35 0%, #082a4a 50%, #003f76 100%) 0% 0%
     no-repeat padding-box;
   padding: 40px;
   width: 1080px;
   box-sizing: border-box;
+  overflow: hidden;
+}
+
+.overlay {
+  background: transparent linear-gradient(#082c4eff 0%, #082c4e00 100%) 0% 0%
+    no-repeat padding-box;
+  position: absolute;
+  top: -25px;
+  right: 991px;
+  width: 1000px;
+  height: 1000px;
+  transform: rotate(-15deg);
+  transform-origin: top right;
+  opacity: 0.08;
+}
+
+.overlayBorder {
+  background: transparent linear-gradient(#707070ff 0%, #70707000 100%) 0% 0%
+    no-repeat padding-box;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
 }
 
 .backgroundWhite {
@@ -44,7 +69,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 10px;
+  margin-left: 20px;
   padding-top: 4px;
   line-height: 1;
 }
