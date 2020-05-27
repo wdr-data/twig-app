@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Paper from "@material-ui/core/Paper";
+import download from "downloadjs";
 
 import twitterLogo from "./images/Twitter_Logo_Blue.svg";
 import appStyles from "./App.module.css";
@@ -85,14 +86,15 @@ const tokenizeTweet = (tweet) => {
 
 function Tweet({ tweet }) {
   const tweetRef = useRef();
-  const [image, setImage] = useState();
 
-  useEffect(() => {
-    const convertToImage = async () => {
-      const dataUrl = await htmlToImage.toPng(tweetRef.current);
-      setImage(dataUrl);
-    };
-    setTimeout(convertToImage, 1500);
+  const downloadImage = useCallback(async () => {
+    const dataUrl = await htmlToImage.toPng(tweetRef.current);
+    download(
+      dataUrl,
+      `${tweet.user.screen_name}_${moment()
+        .tz("Europe/Berlin")
+        .format("YYYY-MM-DD")}.png`
+    );
   }, [tweet]);
 
   const hasMedia = tweet.entities && tweet.entities.media;
@@ -110,48 +112,41 @@ function Tweet({ tweet }) {
   );
 
   return (
-    <>
-      <Paper className={appStyles.paper} elevation={8}>
-        <Button
-          className={appStyles.downloadButton}
-          variant="contained"
-          color="secondary"
-          href={image}
-          download={`${tweet.user.screen_name}_${moment()
-            .tz("Europe/Berlin")
-            .format("YYYY-MM-DD")}.png`}
-          disabled={!image}
-        >
-          Download
-        </Button>
-        <div ref={tweetRef} className={tweetStyles.backgroundBlue}>
-          <div className={tweetStyles.backgroundWhite}>
-            <div className={tweetStyles.userContainer}>
-              <img
-                className={tweetStyles.userPhoto}
-                src={tweet.user.profile_image_url_https}
-              />
-              <div className={tweetStyles.userNameContainer}>
-                <span className={tweetStyles.userName}>{tweet.user.name}</span>
-                <span className={tweetStyles.userScreenName}>
-                  @{tweet.user.screen_name}
-                </span>
-              </div>
-              <img className={tweetStyles.twitterLogo} src={twitterLogo} />
+    <Paper className={appStyles.paper} elevation={8}>
+      <Button
+        className={appStyles.downloadButton}
+        variant="contained"
+        color="secondary"
+        onClick={downloadImage}
+      >
+        Download
+      </Button>
+      <div ref={tweetRef} className={tweetStyles.backgroundBlue}>
+        <div className={tweetStyles.backgroundWhite}>
+          <div className={tweetStyles.userContainer}>
+            <img
+              className={tweetStyles.userPhoto}
+              src={tweet.user.profile_image_url_https}
+            />
+            <div className={tweetStyles.userNameContainer}>
+              <span className={tweetStyles.userName}>{tweet.user.name}</span>
+              <span className={tweetStyles.userScreenName}>
+                @{tweet.user.screen_name}
+              </span>
             </div>
-            <p className={tweetStyles.text}>{tokenizeTweet(tweet)}</p>
-            {!hasMedia && timestamp}
+            <img className={tweetStyles.twitterLogo} src={twitterLogo} />
           </div>
-          {hasMedia && (
-            <div className={tweetStyles.imageContainer}>
-              <img src={tweet.entities.media[0].media_url_https} />{" "}
-            </div>
-          )}
-          {hasMedia && timestamp}
+          <p className={tweetStyles.text}>{tokenizeTweet(tweet)}</p>
+          {!hasMedia && timestamp}
         </div>
-      </Paper>
-      {image && <img src={image} style={{ marginTop: "20px" }} />}
-    </>
+        {hasMedia && (
+          <div className={tweetStyles.imageContainer}>
+            <img src={tweet.entities.media[0].media_url_https} />{" "}
+          </div>
+        )}
+        {hasMedia && timestamp}
+      </div>
+    </Paper>
   );
 }
 

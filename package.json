@@ -8,6 +8,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "classnames": "^2.2.6",
+    "downloadjs": "^1.4.7",
     "html-to-image": "^0.1.1",
     "moment": "^2.26.0",
     "moment-timezone": "^0.5.31",
