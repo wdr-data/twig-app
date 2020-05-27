@@ -34,6 +34,7 @@ const tokenizeTweet = (tweet) => {
       )
       .filter((ent) => !!ent),
     ...(entities.media || []).map((entity) => ({ ...entity, kind: "media" })),
+    {kind: "end", indices: [codepoints.length, codepoints.length]}
   ].sort((a, b) => a.indices[0] - b.indices[0]);
 
   const nodes = [];
@@ -52,7 +53,7 @@ const tokenizeTweet = (tweet) => {
       );
     } else if (entity.kind === "break") {
       nodes.push(<br />);
-    } else if (entity.kind === "media") {
+    } else if (["media", "end"].includes(entity.kind)) {
       // Don't display media links
     } else {
       nodes.push(
