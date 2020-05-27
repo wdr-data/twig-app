@@ -143,9 +143,9 @@ function Tweet({ tweet }) {
             <div className={tweetStyles.userNameContainer}>
               <span className={tweetStyles.userName}>
                 <Twemoji options={{ folder: "svg", ext: ".svg" }}>
-                  {tweet.user.name}
-                </Twemoji>{" "}
-                {tweet.user.verified && <img alt="" src={blueCheckmark} />}
+                  {tweet.user.name}{" "}
+                  {tweet.user.verified && <img alt="" src={blueCheckmark} />}
+                </Twemoji>
               </span>
               <span className={tweetStyles.userScreenName}>
                 <Twemoji options={{ folder: "svg", ext: ".svg" }}>
