@@ -1,7 +1,6 @@
 import React, { useCallback, useState, useRef, useEffect } from "react";
 import moment from "moment";
-import tz from "moment-timezone";
-
+import "moment-timezone";
 import "moment/locale/de";
 import htmlToImage from "html-to-image";
 import classNames from "classnames";
@@ -175,7 +174,7 @@ function App() {
     <div className={appStyles.app}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={appStyles.pageTitle}>
+          <Typography variant="h5" className={appStyles.pageTitle}>
             WDR Twitter Image Generator
           </Typography>
           <Button
