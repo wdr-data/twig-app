@@ -130,42 +130,44 @@ function Tweet({ tweet }) {
         Download
       </Button>
       <div ref={tweetRef} className={tweetStyles.backgroundBlue}>
-        <Twemoji options={{ folder: "svg", ext: ".svg" }}>
-          <div className={tweetStyles.overlay}>
-            <div className={tweetStyles.overlayBorder} />
-          </div>
-          <div className={tweetStyles.backgroundWhite}>
-            <div className={tweetStyles.userContainer}>
-              <img
-                alt=""
-                className={tweetStyles.userPhoto}
-                src={tweet.user.profile_image_url_https}
-              />
-              <div className={tweetStyles.userNameContainer}>
-                <span className={tweetStyles.userName}>
-                  {tweet.user.name}{" "}
-                  {tweet.user.verified && <img alt="" src={blueCheckmark} />}
-                </span>
-                <span className={tweetStyles.userScreenName}>
+        <div className={tweetStyles.overlay}>
+          <div className={tweetStyles.overlayBorder} />
+        </div>
+        <div className={tweetStyles.backgroundWhite}>
+          <div className={tweetStyles.userContainer}>
+            <img
+              alt=""
+              className={tweetStyles.userPhoto}
+              src={tweet.user.profile_image_url_https}
+            />
+            <div className={tweetStyles.userNameContainer}>
+              <span className={tweetStyles.userName}>
+                <Twemoji options={{ folder: "svg", ext: ".svg" }}>
+                  {tweet.user.name}
+                </Twemoji>{" "}
+                {tweet.user.verified && <img alt="" src={blueCheckmark} />}
+              </span>
+              <span className={tweetStyles.userScreenName}>
+                <Twemoji options={{ folder: "svg", ext: ".svg" }}>
                   @{tweet.user.screen_name}
-                </span>
-              </div>
-              <img
-                alt=""
-                className={tweetStyles.twitterLogo}
-                src={twitterLogo}
-              />
+                </Twemoji>
+              </span>
             </div>
-            <p className={tweetStyles.text}>{tokenizeTweet(tweet)}</p>
-            {!hasMedia && timestamp}
+            <img alt="" className={tweetStyles.twitterLogo} src={twitterLogo} />
           </div>
-          {hasMedia && (
-            <div className={tweetStyles.imageContainer}>
-              <img alt="" src={tweet.entities.media[0].media_url_https} />{" "}
-            </div>
-          )}
-          {hasMedia && timestamp}
-        </Twemoji>
+          <p className={tweetStyles.text}>
+            <Twemoji options={{ folder: "svg", ext: ".svg" }}>
+              {tokenizeTweet(tweet)}
+            </Twemoji>
+          </p>
+          {!hasMedia && timestamp}
+        </div>
+        {hasMedia && (
+          <div className={tweetStyles.imageContainer}>
+            <img alt="" src={tweet.entities.media[0].media_url_https} />{" "}
+          </div>
+        )}
+        {hasMedia && timestamp}
       </div>
     </Paper>
   );
