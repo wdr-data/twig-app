@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef, useEffect } from "react";
+import React, { useCallback, useState, useRef } from "react";
 import moment from "moment";
 import "moment-timezone";
 import "moment/locale/de";
@@ -135,26 +135,27 @@ function Tweet({ tweet }) {
         <div className={tweetStyles.backgroundWhite}>
           <div className={tweetStyles.userContainer}>
             <img
+              alt=""
               className={tweetStyles.userPhoto}
               src={tweet.user.profile_image_url_https}
             />
             <div className={tweetStyles.userNameContainer}>
               <span className={tweetStyles.userName}>
                 {tweet.user.name}{" "}
-                {tweet.user.verified && <img src={blueCheckmark} />}
+                {tweet.user.verified && <img alt="" src={blueCheckmark} />}
               </span>
               <span className={tweetStyles.userScreenName}>
                 @{tweet.user.screen_name}
               </span>
             </div>
-            <img className={tweetStyles.twitterLogo} src={twitterLogo} />
+            <img alt="" className={tweetStyles.twitterLogo} src={twitterLogo} />
           </div>
           <p className={tweetStyles.text}>{tokenizeTweet(tweet)}</p>
           {!hasMedia && timestamp}
         </div>
         {hasMedia && (
           <div className={tweetStyles.imageContainer}>
-            <img src={tweet.entities.media[0].media_url_https} />{" "}
+            <img alt="" src={tweet.entities.media[0].media_url_https} />{" "}
           </div>
         )}
         {hasMedia && timestamp}
