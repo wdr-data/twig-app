@@ -142,24 +142,21 @@ function Tweet({ tweet }) {
             />
             <div className={tweetStyles.userNameContainer}>
               <span className={tweetStyles.userName}>
-                <Twemoji options={{ folder: "svg", ext: ".svg" }}>
-                  {tweet.user.name}{" "}
-                  {tweet.user.verified && <img alt="" src={blueCheckmark} />}
-                </Twemoji>
+                <Twemoji tag="span" options={{ folder: "svg", ext: ".svg" }}>
+                  {tweet.user.name}
+                </Twemoji>{" "}
+                {tweet.user.verified && <img alt="" src={blueCheckmark} />}
               </span>
+
               <span className={tweetStyles.userScreenName}>
-                <Twemoji options={{ folder: "svg", ext: ".svg" }}>
-                  @{tweet.user.screen_name}
-                </Twemoji>
+                @{tweet.user.screen_name}
               </span>
             </div>
             <img alt="" className={tweetStyles.twitterLogo} src={twitterLogo} />
           </div>
-          <p className={tweetStyles.text}>
-            <Twemoji options={{ folder: "svg", ext: ".svg" }}>
-              {tokenizeTweet(tweet)}
-            </Twemoji>
-          </p>
+          <Twemoji noWrapper options={{ folder: "svg", ext: ".svg" }}>
+            <p className={tweetStyles.text}>{tokenizeTweet(tweet)}</p>
+          </Twemoji>
           {!hasMedia && timestamp}
         </div>
         {hasMedia && (
