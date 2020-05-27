@@ -1,5 +1,7 @@
 import React, { useCallback, useState, useRef, useEffect } from "react";
 import moment from "moment";
+import tz from "moment-timezone";
+
 import "moment/locale/de";
 import htmlToImage from "html-to-image";
 import classNames from "classnames";
@@ -115,6 +117,11 @@ function Tweet({ tweet }) {
           className={appStyles.downloadButton}
           variant="contained"
           color="secondary"
+          href={image}
+          download={`${tweet.user.screen_name}_${moment()
+            .tz("Europe/Berlin")
+            .format("YYYY-MM-DD")}.png`}
+          disabled={!image}
         >
           Download
         </Button>
