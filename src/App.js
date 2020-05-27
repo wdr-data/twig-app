@@ -88,7 +88,10 @@ function Tweet({ tweet }) {
   const tweetRef = useRef();
 
   const downloadImage = useCallback(async () => {
-    const dataUrl = await htmlToImage.toPng(tweetRef.current);
+    const dataUrl = await htmlToImage.toPng(tweetRef.current, {
+      width: tweetRef.current.clientWidth,
+      height: tweetRef.current.clientHeight,
+    });
     download(
       dataUrl,
       `${tweet.user.screen_name}_${moment()
