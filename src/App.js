@@ -10,6 +10,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Paper from "@material-ui/core/Paper";
 import download from "downloadjs";
+import Twemoji from "react-twemoji";
 
 import twitterLogo from "./images/Twitter_Logo_Blue.svg";
 import blueCheckmark from "./images/Blue_Checkmark.svg";
@@ -129,36 +130,42 @@ function Tweet({ tweet }) {
         Download
       </Button>
       <div ref={tweetRef} className={tweetStyles.backgroundBlue}>
-        <div className={tweetStyles.overlay}>
-          <div className={tweetStyles.overlayBorder} />
-        </div>
-        <div className={tweetStyles.backgroundWhite}>
-          <div className={tweetStyles.userContainer}>
-            <img
-              alt=""
-              className={tweetStyles.userPhoto}
-              src={tweet.user.profile_image_url_https}
-            />
-            <div className={tweetStyles.userNameContainer}>
-              <span className={tweetStyles.userName}>
-                {tweet.user.name}{" "}
-                {tweet.user.verified && <img alt="" src={blueCheckmark} />}
-              </span>
-              <span className={tweetStyles.userScreenName}>
-                @{tweet.user.screen_name}
-              </span>
+        <Twemoji options={{ folder: "svg", ext: ".svg" }}>
+          <div className={tweetStyles.overlay}>
+            <div className={tweetStyles.overlayBorder} />
+          </div>
+          <div className={tweetStyles.backgroundWhite}>
+            <div className={tweetStyles.userContainer}>
+              <img
+                alt=""
+                className={tweetStyles.userPhoto}
+                src={tweet.user.profile_image_url_https}
+              />
+              <div className={tweetStyles.userNameContainer}>
+                <span className={tweetStyles.userName}>
+                  {tweet.user.name}{" "}
+                  {tweet.user.verified && <img alt="" src={blueCheckmark} />}
+                </span>
+                <span className={tweetStyles.userScreenName}>
+                  @{tweet.user.screen_name}
+                </span>
+              </div>
+              <img
+                alt=""
+                className={tweetStyles.twitterLogo}
+                src={twitterLogo}
+              />
             </div>
-            <img alt="" className={tweetStyles.twitterLogo} src={twitterLogo} />
+            <p className={tweetStyles.text}>{tokenizeTweet(tweet)}</p>
+            {!hasMedia && timestamp}
           </div>
-          <p className={tweetStyles.text}>{tokenizeTweet(tweet)}</p>
-          {!hasMedia && timestamp}
-        </div>
-        {hasMedia && (
-          <div className={tweetStyles.imageContainer}>
-            <img alt="" src={tweet.entities.media[0].media_url_https} />{" "}
-          </div>
-        )}
-        {hasMedia && timestamp}
+          {hasMedia && (
+            <div className={tweetStyles.imageContainer}>
+              <img alt="" src={tweet.entities.media[0].media_url_https} />{" "}
+            </div>
+          )}
+          {hasMedia && timestamp}
+        </Twemoji>
       </div>
     </Paper>
   );

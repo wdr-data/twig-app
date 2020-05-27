@@ -81,6 +81,12 @@
   font-size: 22px;
 }
 
+.userName :global(.emoji) {
+  height: 22px;
+  margin: -4px 5px 0 5px;
+  transform: translateY(4px);
+}
+
 .userName img {
   display: inline-block;
   vertical-align: sub;
@@ -103,6 +109,12 @@
   color: #002f52;
   font-size: 48px;
   overflow-wrap: break-word;
+}
+
+.text :global(.emoji) {
+  height: 48px;
+  margin: -7px 5px 0 5px;
+  transform: translateY(7px);
 }
 
 .highlightText {

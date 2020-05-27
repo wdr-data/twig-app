@@ -14,7 +14,8 @@
     "moment-timezone": "^0.5.31",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-twemoji": "^0.2.3"
   },
   "scripts": {
     "start": "react-scripts start",
