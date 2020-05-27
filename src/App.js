@@ -13,12 +13,15 @@ moment.locale("de");
 const baseUrl =
   "https://zvbwmhjkp7.execute-api.eu-central-1.amazonaws.com/staging/status/";
 
+
+const replaceHtmlEnts = (text) => text.replace('&lt;', '<').replace('&gt;', '>').replace('&amp;', '&')
+
 const tokenizeTweet = (tweet) => {
   const entities = tweet.entities;
   const text = tweet.full_text;
   const codepoints = Array.from(text);
 
-  const getSlice = (start, end) => codepoints.slice(start, end).join("");
+  const getSlice = (start, end) => replaceHtmlEnts(codepoints.slice(start, end).join(""));
 
   const allEntities = [
     ...entities.hashtags.map((entity) => ({ ...entity, kind: "hashtag" })),
