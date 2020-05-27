@@ -84,7 +84,7 @@
 .userName :global(.emoji) {
   height: 22px;
   margin: -1px 2px 0 2px;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .userName img {
