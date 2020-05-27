@@ -81,6 +81,13 @@
   font-size: 22px;
 }
 
+.userName img {
+  display: inline-block;
+  vertical-align: sub;
+  height: 21px;
+  transform: translateY(-1px);
+}
+
 .userScreenName {
   font-family: "WDRSansVZ";
   font-weight: 500;

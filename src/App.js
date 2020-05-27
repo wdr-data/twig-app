@@ -12,6 +12,7 @@ import Paper from "@material-ui/core/Paper";
 import download from "downloadjs";
 
 import twitterLogo from "./images/Twitter_Logo_Blue.svg";
+import blueCheckmark from "./images/Blue_Checkmark.svg";
 import appStyles from "./App.module.css";
 import tweetStyles from "./Tweet.module.css";
 
@@ -135,7 +136,10 @@ function Tweet({ tweet }) {
               src={tweet.user.profile_image_url_https}
             />
             <div className={tweetStyles.userNameContainer}>
-              <span className={tweetStyles.userName}>{tweet.user.name}</span>
+              <span className={tweetStyles.userName}>
+                {tweet.user.name}{" "}
+                {tweet.user.verified && <img src={blueCheckmark} />}
+              </span>
               <span className={tweetStyles.userScreenName}>
                 @{tweet.user.screen_name}
               </span>
