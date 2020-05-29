@@ -23,7 +23,7 @@ const baseUrl =
   "https://zvbwmhjkp7.execute-api.eu-central-1.amazonaws.com/staging/status/";
 
 const replaceHtmlEnts = (text) =>
-  text.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&");
+  text.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
 
 const tokenizeTweet = (tweet) => {
   const entities = tweet.entities;
