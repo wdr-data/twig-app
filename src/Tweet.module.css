@@ -7,6 +7,13 @@
   width: 1080px;
   box-sizing: border-box;
   overflow: hidden;
+
+  /* --brand-primary: #00345f; */
+  --brand-primary: #002f52;
+
+  --brand-highlight: #008b9e;
+  --brand-highlight-darker: #007381;
+  --brand-highlight-lighter: #0099ad;
 }
 
 .overlay {
@@ -77,7 +84,7 @@
 .userName {
   font-family: "WDRSansVZ";
   font-weight: bold;
-  color: #002f52;
+  color: var(--brand-primary);
   font-size: 22px;
 }
 
@@ -97,7 +104,7 @@
 .userScreenName {
   font-family: "WDRSansVZ";
   font-weight: 500;
-  color: #008b9e;
+  color: var(--brand-highlight-darker);
   font-size: 18px;
 }
 
@@ -106,7 +113,7 @@
   margin-bottom: 20px;
   font-family: "WDRSlabVZ";
   font-weight: 500;
-  color: #002f52;
+  color: var(--brand-primary);
   font-size: 48px;
   overflow-wrap: break-word;
 }
@@ -118,7 +125,7 @@
 }
 
 .highlightText {
-  color: #008b9e;
+  color: var(--brand-highlight);
 }
 
 .timestamp {
@@ -126,11 +133,12 @@
   font-family: "WDRSansVZ";
   font-weight: 500;
   font-size: 18px;
-  color: #008b9e;
+  color: var(--brand-highlight-darker);
   margin-bottom: -5px;
 }
 
 .timestampBelow {
+  color: var(--brand-highlight-lighter);
   padding-top: 10px;
   padding-left: 20px;
 }
